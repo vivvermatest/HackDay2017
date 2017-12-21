@@ -1,7 +1,7 @@
 var querystring = require('querystring');
 var request = require('request');
 
-var callCare = function createCareCall(postData, resp) {
+var callCare = function createCareCall(postData, resp,scheduler) {
 	request({
 		url: "https://chatc.produs1.ciscoccservice.com/chatc/v1/callback",
 		method: "POST",
@@ -26,6 +26,10 @@ var callCare = function createCareCall(postData, resp) {
 			careResp.speech = "your call back request failed";
 			careResp.displayText = "your call back request was failed";
 		}
+
+		if(scheduler)
+			scheduler.cancel();
+
 		if(resp)
 		resp.json(careResp);
 	});

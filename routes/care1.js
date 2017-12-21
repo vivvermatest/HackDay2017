@@ -39,7 +39,7 @@ router.post('/', function(req, res) {
 
     var j = schedule.scheduleJob(scheduleTime, function(){
         console.log('Task scheduled.'+ time +' original time '+ scheduleTime) ;
-        callCare(callReq);
+        callCare(callReq,null,j);
       });
       res.json(careResp);
    }else{
