@@ -18,8 +18,17 @@ router.post('/', function(req, res) {
     reason: "this is my reason for spark!!!google home test"
    };
 
-   
+    console.log('time::',time);
+    var clientTime = new Date(time);
+    console.log('clientTime::', clientTime);
+    var now = new Date();
+    var offset = now.getTimezoneOffset();
+   var serverScheduledTime = new Date(clientTime.getTime() + (offset*60000) + (330*60*1000));
+
+
+   console.log('serverScheduledTime...', serverScheduledTime);
    if(time){
+       console.log('Here::',time);
     time=moment(time).utc().format("DD MMM YYYY hh:mm a")
     var scheduleTime= new Date(time);
     console.log("Read time "+ scheduleTime+" "+time)
@@ -37,10 +46,10 @@ router.post('/', function(req, res) {
         }
     };
 
-    var j = schedule.scheduleJob(scheduleTime, function(){
+    /*var j = schedule.scheduleJob(scheduleTime, function(){
         console.log('Task scheduled.'+ time +' original time '+ scheduleTime) ;
         callCare(callReq,null,j);
-      });
+      });*/
       res.json(careResp);
    }else{
         console.log('Immidiate callback.');

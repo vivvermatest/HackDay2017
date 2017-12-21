@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var care = require('./routes/care');
 var care1 = require('./routes/care1');
-
+var dummyChatC = require('./routes/dummyChatC');
 var app = express();
 
 // view engine setup
@@ -26,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/createCareCallback', care);
 app.use('/scheduleCareCallback', care1 )
+app.use('/dummyChatC', dummyChatC )
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -3,7 +3,7 @@ var request = require('request');
 
 var callCare = function createCareCall(postData, resp,scheduler) {
 	request({
-		url: "https://chatc.produs1.ciscoccservice.com/chatc/v1/callback",
+		url: "http://localhost:8080/dummyChatC",
 		method: "POST",
 		json: true,
 		body: postData
