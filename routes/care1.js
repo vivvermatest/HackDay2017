@@ -18,15 +18,15 @@ router.post('/', function(req, res) {
     reason: "this is my reason for spark!!!google home test"
    };
 
-    console.log('time::',time);
+    //console.log('time::',time);
     var clientTime = new Date(time);
-    console.log('clientTime::', clientTime);
+    console.log('Recieved Time from client::', clientTime);
     var now = new Date();
+    console.log('Current Server Time::', now);
     var offset = now.getTimezoneOffset();
-   var serverScheduledTime = new Date(clientTime.getTime() + (offset*60000) + (330*60*1000));
-
-
-   console.log('serverScheduledTime...', serverScheduledTime);
+    console.log('Server Offset from UTC::', offset);
+    var serverScheduledTime = new Date(clientTime.getTime() + (offset*60000) + (330*60*1000));
+    console.log('Scheduled Time on Server', serverScheduledTime);
    if(time){
        console.log('Here::',time);
     time=moment(time).utc().format("DD MMM YYYY hh:mm a")
